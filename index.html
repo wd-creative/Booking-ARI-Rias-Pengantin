@@ -3,46 +3,58 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Booking Rias Pengantin</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      color: #333;
-      text-align: center;
-      padding: 40px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .card {
       background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
     h2 {
-      margin-bottom: 20px;
+      text-align: center;
       color: #ff4d6d;
+      margin-bottom: 20px;
     }
 
     input, select {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
     button {
-      padding: 10px 20px;
-      margin: 10px;
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 8px;
+      font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
     }
 
     .cek {
@@ -56,8 +68,16 @@
     }
 
     #status {
+      text-align: center;
       margin-top: 15px;
       font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        margin: 10px;
+        padding: 15px;
+      }
     }
   </style>
 
@@ -68,13 +88,15 @@
 <div class="card">
   <h2>💄 Booking Rias Pengantin</h2>
 
-<input id="nama" placeholder="Nama"><br> <input id="wa" placeholder="WhatsApp (08xxx)"><br> <input id="tanggal" type="date"><br>
+  <input id="nama" placeholder="Nama">
+  <input id="wa" placeholder="WhatsApp (08xxx)">
+  <input id="tanggal" type="date">
 
   <select id="layanan">
     <option>Rias Pengantin</option>
     <option>Dekorasi</option>
     <option>Sewa Baju</option>
-  </select><br>
+  </select>
 
 <button class="cek" onclick="cek()">Cek Tanggal</button> <button class="booking" onclick="booking()">Booking</button>
 
@@ -85,9 +107,6 @@
 const URL = "https://script.google.com/macros/s/AKfycbxbPnHNBV1g2Ani8sp91UHorOzdwgEan4cC32XGkgKruHPx7XAO4kdgyUxcDlsJ6dR5/exec";
 const API_KEY = "SECRET123";
 
-// =======================
-// CEK TANGGAL
-// =======================
 async function cek() {
   try {
     const tanggal = document.getElementById("tanggal").value;
@@ -111,9 +130,6 @@ async function cek() {
   }
 }
 
-// =======================
-// BOOKING
-// =======================
 async function booking() {
   try {
     const res = await fetch(URL, {
