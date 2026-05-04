@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Rias Pengantin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f8e1f4, #e1f0ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-check {
+      background: #ddd;
+    }
+
+    .btn-book {
+      background: #ff4da6;
+      color: white;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #status {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>💄 Booking Rias</h2>
+
+  <input id="nama" placeholder="Nama">
+  <input id="wa" placeholder="WhatsApp">
+  <input id="tanggal" type="date">
+
+  <select id="layanan">
+    <option>Rias Pengantin</option>
+    <option>Dekorasi</option>
+    <option>Sewa Baju</option>
+  </select>
+
+  <div class="btn-group">
+    <button class="btn-check" onclick="cek()">Cek</button>
+    <button class="btn-book" onclick="booking()">Booking</button>
+  </div>
+
+  <p id="status"></p>
+</div>
+
+<script>
+const URL = "https://script.google.com/macros/s/AKfycbxbPnHNBV1g2Ani8sp91UHorOzdwgEan4cC32XGkgKruHPx7XAO4kdgyUxcDlsJ6dR5/exec";
+const API_KEY = "SECRET123";
+
+async function cek() {
+  const tanggal = document.getElementById("tanggal").value;
+
+  const res = await fetch(URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      api_key: API_KEY,
+      action: "check",
+      tanggal: tanggal
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("status").innerText =
+    data.available ? "✅ Tersedia" : "❌ Penuh";
+}
+
+async function booking() {
+  const res = await fetch(URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      api_key: API_KEY,
+      action: "create",
+      nama: document.getElementById("nama").value,
+      wa: document.getElementById("wa").value,
+      tanggal: document.getElementById("tanggal").value,
+      layanan: document.getElementById("layanan").value,
+      lokasi: "Semarang"
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("status").innerText = data.message;
+}
+</script>
+
+</body>
+</html>
