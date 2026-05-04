@@ -70,7 +70,7 @@
 <body>
 
 <div class="card">
-  <h2>💄 Booking Rias</h2>
+  <h2>💄 Booking ARI Rias Pengantin</h2>
 
   <input id="nama" placeholder="Nama">
   <input id="wa" placeholder="WhatsApp">
@@ -95,42 +95,48 @@ const URL = "https://script.google.com/macros/s/AKfycbxbPnHNBV1g2Ani8sp91UHorOzd
 const API_KEY = "SECRET123";
 
 async function cek() {
-  const tanggal = document.getElementById("tanggal").value;
+  try {
+    const tanggal = document.getElementById("tanggal").value;
 
-  const res = await fetch(URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      api_key: API_KEY,
-      action: "check",
-      tanggal: tanggal
-    })
-  });
+    const res = await fetch(URL, {
+      method: "POST",
+      body: JSON.stringify({
+        api_key: API_KEY,
+        action: "check",
+        tanggal: tanggal
+      })
+    });
 
-  const data = await res.json();
-  document.getElementById("status").innerText =
-    data.available ? "✅ Tersedia" : "❌ Penuh";
+    const data = await res.json();
+    document.getElementById("status").innerText =
+      data.available ? "✅ Tersedia" : "❌ Penuh";
+
+  } catch (err) {
+    document.getElementById("status").innerText = "Error: " + err;
+  }
 }
-
 async function booking() {
-  const res = await fetch(URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      api_key: API_KEY,
-      action: "create",
-      nama: document.getElementById("nama").value,
-      wa: document.getElementById("wa").value,
-      tanggal: document.getElementById("tanggal").value,
-      layanan: document.getElementById("layanan").value,
-      lokasi: "Semarang"
-    })
-  });
+  try {
+    const res = await fetch(URL, {
+      method: "POST",
+      body: JSON.stringify({
+        api_key: API_KEY,
+        action: "create",
+        nama: document.getElementById("nama").value,
+        wa: document.getElementById("wa").value,
+        tanggal: document.getElementById("tanggal").value,
+        layanan: document.getElementById("layanan").value,
+        lokasi: "Semarang"
+      })
+    });
 
-  const data = await res.json();
-  document.getElementById("status").innerText = data.message;
-}
-</script>
+    const data = await res.json();
+    document.getElementById("status").innerText = data.message;
+
+  } catch (err) {
+    document.getElementById("status").innerText = "Error: " + err;
+  }
+}</script>
 
 </body>
 </html>
