@@ -15,14 +15,40 @@ body {
 }
 
 .header {
-  background: linear-gradient(to right, #ff4d6d, #ff7eb3);
+  position: relative;
+  height: 250px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 25px 15px;
+
+  background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover no-repeat;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 77, 109, 0.7);
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
 }
 
 .header h1 {
   margin: 0;
+  font-size: 24px;
+}
+
+.header p {
+  margin-top: 5px;
+  font-size: 14px;
 }
 
 .container {
@@ -80,8 +106,10 @@ button {
 <body>
 
 <div class="header">
-  <h1>💄 ARI Rias Pengantin</h1>
-  <p>Layanan Rias & Paket Pernikahan Lengkap</p>
+  <div class="header-content">
+    <h1>💍 ARI Rias Pengantin</h1>
+    <p>Mewujudkan Hari Bahagiamu Lebih Istimewa</p>
+  </div>
 </div>
 
 <div class="container">
