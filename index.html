@@ -2,105 +2,123 @@
 
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Booking Rias Pengantin</title>
+<title>Booking Rias Pengantin</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #fff0f5;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(to bottom, #ff758c, #ff7eb3);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.header {
+  background: linear-gradient(to right, #ff4d6d, #ff7eb3);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
 
-    .card {
-      background: white;
-      width: 100%;
-      max-width: 420px;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+.header h1 {
+  margin: 0;
+}
 
-    h2 {
-      text-align: center;
-      color: #ff4d6d;
-      margin-bottom: 20px;
-    }
+.container {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
 
-    .cek {
-      background: #ff4d6d;
-      color: white;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .booking {
-      background: #28a745;
-      color: white;
-    }
+.cek {
+  background: #ff4d6d;
+  color: white;
+}
 
-    #status {
-      text-align: center;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+.booking {
+  background: #28a745;
+  color: white;
+}
 
-    @media (max-width: 480px) {
-      .card {
-        margin: 10px;
-        padding: 15px;
-      }
-    }
-  </style>
+#status {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
 
 </head>
 
 <body>
 
-<div class="card">
-  <h2>💄 Booking Rias Pengantin</h2>
+<div class="header">
+  <h1>💄 ARI Rias Pengantin</h1>
+  <p>Layanan Rias & Paket Pernikahan Lengkap</p>
+</div>
 
-  <input id="nama" placeholder="Nama">
-  <input id="wa" placeholder="WhatsApp (08xxx)">
-  <input id="tanggal" type="date">
+<div class="container">
+  <div class="card">
 
-  <select id="layanan">
-    <option>Rias Pengantin</option>
-    <option>Dekorasi</option>
-    <option>Sewa Baju</option>
-  </select>
+```
+<h3>Form Booking</h3>
 
-<button class="cek" onclick="cek()">Cek Tanggal</button> <button class="booking" onclick="booking()">Booking</button>
+<input id="nama" placeholder="Nama Lengkap">
+<input id="alamat" placeholder="Alamat">
+<input id="wa" placeholder="No. WhatsApp (08xxx)">
+<input id="tanggal" type="date">
 
-  <p id="status"></p>
+<select id="layanan">
+  <option>Paket Pengantin Lengkap (Make Up, Dekorasi, Baju, Hiburan)</option>
+  <option>Paket Pengantin tanpa Hiburan</option>
+  <option>Rias Pengantin</option>
+  <option>Sewa Dekorasi</option>
+  <option>Sewa Wardrobe / Kostum</option>
+  <option>Sewa Hiburan</option>
+</select>
+
+<select id="mobil">
+  <option value="">Sewa Mobil?</option>
+  <option value="Ya">Ya</option>
+  <option value="Tidak">Tidak</option>
+</select>
+
+<textarea id="pesan" placeholder="Pesan / Catatan Tambahan"></textarea>
+
+<button class="cek" onclick="cek()">Cek Ketersediaan</button>
+<button class="booking" onclick="booking()">Booking Sekarang</button>
+
+<p id="status"></p>
+```
+
+  </div>
 </div>
 
 <script>
@@ -108,49 +126,41 @@ const URL = "https://script.google.com/macros/s/AKfycbxbPnHNBV1g2Ani8sp91UHorOzd
 const API_KEY = "SECRET123";
 
 async function cek() {
-  try {
-    const tanggal = document.getElementById("tanggal").value;
+  const tanggal = document.getElementById("tanggal").value;
 
-    const res = await fetch(URL, {
-      method: "POST",
-      body: JSON.stringify({
-        api_key: API_KEY,
-        action: "check",
-        tanggal: tanggal
-      })
-    });
+  const res = await fetch(URL, {
+    method: "POST",
+    body: JSON.stringify({
+      api_key: API_KEY,
+      action: "check",
+      tanggal: tanggal
+    })
+  });
 
-    const data = await res.json();
-
-    document.getElementById("status").innerText =
-      data.available ? "✅ Tersedia" : "❌ Penuh";
-
-  } catch (err) {
-    document.getElementById("status").innerText = "Error: " + err;
-  }
+  const data = await res.json();
+  document.getElementById("status").innerText =
+    data.available ? "✅ Tersedia" : "❌ Penuh";
 }
 
 async function booking() {
-  try {
-    const res = await fetch(URL, {
-      method: "POST",
-      body: JSON.stringify({
-        api_key: API_KEY,
-        action: "create",
-        nama: document.getElementById("nama").value,
-        wa: document.getElementById("wa").value,
-        tanggal: document.getElementById("tanggal").value,
-        layanan: document.getElementById("layanan").value,
-        lokasi: "Semarang"
-      })
-    });
+  const res = await fetch(URL, {
+    method: "POST",
+    body: JSON.stringify({
+      api_key: API_KEY,
+      action: "create",
+      nama: document.getElementById("nama").value,
+      alamat: document.getElementById("alamat").value,
+      wa: document.getElementById("wa").value,
+      tanggal: document.getElementById("tanggal").value,
+      layanan: document.getElementById("layanan").value,
+      mobil: document.getElementById("mobil").value,
+      notes: document.getElementById("pesan").value,
+      lokasi: "Semarang"
+    })
+  });
 
-    const data = await res.json();
-    document.getElementById("status").innerText = data.message;
-
-  } catch (err) {
-    document.getElementById("status").innerText = "Error: " + err;
-  }
+  const data = await res.json();
+  document.getElementById("status").innerText = data.message;
 }
 </script>
 
