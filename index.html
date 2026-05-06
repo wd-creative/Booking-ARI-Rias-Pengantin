@@ -126,12 +126,12 @@ button {
 <input id="tanggal" type="date">
 
 <select id="layanan">
-  <option>Paket Pengantin Lengkap (Make Up, Dekorasi, Baju, Hiburan)</option>
-  <option>Paket Pengantin tanpa Hiburan</option>
-  <option>Rias Pengantin</option>
+  <option>Paket Pengantin Lengkap (Make Up, Dekorasi, Baju, Solo Organ)</option>
+  <option>Paket Pengantin tanpa Solo Organ</option>
+  <option>Rias Pengantin / Make Up</option>
   <option>Sewa Dekorasi</option>
   <option>Sewa Wardrobe / Kostum</option>
-  <option>Sewa Hiburan</option>
+  <option>Sewa Solo Organ</option>
 </select>
 
 <select id="mobil">
@@ -181,8 +181,8 @@ async function booking() {
       nama: document.getElementById("nama").value,
       alamat: document.getElementById("alamat").value,
       wa: document.getElementById("wa").value,
-      tanggal: document.getElementById("tanggal").value,
       layanan: document.getElementById("layanan").value,
+      tanggal: document.getElementById("tanggal").value,
       mobil: document.getElementById("mobil").value,
       notes: document.getElementById("pesan").value,
       lokasi: "Semarang"
