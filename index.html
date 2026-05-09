@@ -1,198 +1,233 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Rias Pengantin</title>
 
-<title>Booking Rias Pengantin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff0f5;
+    }
 
-<style>
-body {
-  font-family: Arial;
-  margin: 0;
-  background: #fff0f5;
-}
+    .header {
+      position: relative;
+      height: 250px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('https://i.ibb.co.com/gFPmm3F5/DSC09493.jpg') center/cover no-repeat;
+    }
 
-.header {
-  position: relative;
-  height: 250px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 77, 109, 0.7);
+    }
 
-  background: url('https://i.ibb.co.com/gFPmm3F5/DSC09493.jpg') center/cover no-repeat;
-}
+    .header-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 16px;
+    }
 
-.header::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 77, 109, 0.7);
-}
+    .header h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
 
-.header-content {
-  position: relative;
-  z-index: 2;
-}
+    .header p {
+      margin-top: 5px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
-.header h1 {
-  margin: 0;
-  font-size: 26px;
-  letter-spacing: 1px;
-}
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
 
-.header p {
-  margin-top: 5px;
-  font-size: 14px;
-  opacity: 0.9;
-}
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
 
-.container {
-  padding: 20px;
-  max-width: 500px;
-  margin: auto;
-}
+    input, textarea, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
 
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-input, textarea, select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
+    .cek {
+      background: #ff4d6d;
+      color: white;
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .booking {
+      background: #28a745;
+      color: white;
+    }
 
-.cek {
-  background: #ff4d6d;
-  color: white;
-}
-
-.booking {
-  background: #28a745;
-  color: white;
-}
-
-#status {
-  text-align: center;
-  margin-top: 15px;
-  font-weight: bold;
-}
-</style>
-
+    #status {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      min-height: 24px;
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="header">
-  <div class="header-content">
-    <h1>💍 ARI Rias Pengantin</h1>
-    <p>Mewujudkan Hari Bahagiamu Lebih Istimewa</p>
+  <div class="header">
+    <div class="header-content">
+      <h1>💍 ARI Rias Pengantin</h1>
+      <p>Mewujudkan Hari Bahagiamu Lebih Istimewa</p>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="card">
+  <div class="container">
+    <div class="card">
+      <h3>Form Booking</h3>
 
-```
-<h3>Form Booking</h3>
+      <input id="nama" placeholder="Nama Lengkap">
+      <input id="alamat" placeholder="Alamat">
+      <input id="wa" placeholder="No. WhatsApp (08xxx)">
+      <input id="tanggal" type="date">
 
-<input id="nama" placeholder="Nama Lengkap">
-<input id="alamat" placeholder="Alamat">
-<input id="wa" placeholder="No. WhatsApp (08xxx)">
-<input id="tanggal" type="date">
+      <select id="layanan">
+        <option value="Paket Pengantin Lengkap (Make Up, Dekorasi, Baju, Solo Organ)">Paket Pengantin Lengkap (Make Up, Dekorasi, Baju, Solo Organ)</option>
+        <option value="Paket Pengantin tanpa Solo Organ">Paket Pengantin tanpa Solo Organ</option>
+        <option value="Rias Pengantin / Make Up">Rias Pengantin / Make Up</option>
+        <option value="Sewa Dekorasi">Sewa Dekorasi</option>
+        <option value="Sewa Wardrobe / Kostum">Sewa Wardrobe / Kostum</option>
+        <option value="Sewa Solo Organ">Sewa Solo Organ</option>
+      </select>
 
-<select id="layanan">
-  <option>Paket Pengantin Lengkap (Make Up, Dekorasi, Baju, Solo Organ)</option>
-  <option>Paket Pengantin tanpa Solo Organ</option>
-  <option>Rias Pengantin / Make Up</option>
-  <option>Sewa Dekorasi</option>
-  <option>Sewa Wardrobe / Kostum</option>
-  <option>Sewa Solo Organ</option>
-</select>
+      <select id="mobil">
+        <option value="">Sewa Mobil?</option>
+        <option value="Ya">Ya</option>
+        <option value="Tidak">Tidak</option>
+      </select>
 
-<select id="mobil">
-  <option value="">Sewa Mobil?</option>
-  <option value="Ya">Ya</option>
-  <option value="Tidak">Tidak</option>
-</select>
+      <textarea id="pesan" placeholder="Pesan / Catatan Tambahan"></textarea>
 
-<textarea id="pesan" placeholder="Pesan / Catatan Tambahan"></textarea>
+      <button class="cek" onclick="cek()">Cek Ketersediaan</button>
+      <button class="booking" onclick="booking()">Booking Sekarang</button>
 
-<button class="cek" onclick="cek()">Cek Ketersediaan</button>
-<button class="booking" onclick="booking()">Booking Sekarang</button>
-
-<p id="status"></p>
-```
-
+      <p id="status"></p>
+    </div>
   </div>
-</div>
 
-<script>
-const URL = "https://script.google.com/macros/s/AKfycbxbPnHNBV1g2Ani8sp91UHorOzdwgEan4cC32XGkgKruHPx7XAO4kdgyUxcDlsJ6dR5/exec";
-const API_KEY = "SECRET123";
+  <script>
+    const URL = "https://script.google.com/macros/s/AKfycbxbPnHNBV1g2Ani8sp91UHorOzdwgEan4cC32XGkgKruHPx7XAO4kdgyUxcDlsJ6dR5/exec";
+    const API_KEY = "SECRET123";
 
-async function cek() {
-  const tanggal = document.getElementById("tanggal").value;
+    async function cek() {
+      const tanggal = document.getElementById("tanggal").value;
+      const status = document.getElementById("status");
 
-  const res = await fetch(URL, {
-    method: "POST",
-    body: JSON.stringify({
-      api_key: API_KEY,
-      action: "check",
-      tanggal: tanggal
-    })
-  });
+      if (!tanggal) {
+        status.innerText = "Silakan pilih tanggal dulu.";
+        return;
+      }
 
-  const data = await res.json();
-  document.getElementById("status").innerText =
-    data.available ? "✅ Tersedia" : "❌ Penuh";
-}
+      try {
+        status.innerText = "Memeriksa ketersediaan...";
 
-async function booking() {
-  const res = await fetch(URL, {
-    method: "POST",
-    body: JSON.stringify({
-      api_key: API_KEY,
-      action: "create",
-      nama: document.getElementById("nama").value,
-      alamat: document.getElementById("alamat").value,
-      wa: document.getElementById("wa").value,
-      layanan: document.getElementById("layanan").value,
-      tanggal: document.getElementById("tanggal").value,
-      mobil: document.getElementById("mobil").value,
-      notes: document.getElementById("pesan").value,
-      lokasi: "Semarang"
-    })
-  });
+        const res = await fetch(URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({
+            api_key: API_KEY,
+            action: "check",
+            tanggal: tanggal
+          })
+        });
 
-  const data = await res.json();
-  document.getElementById("status").innerText = data.message;
-}
-</script>
+        const data = await res.json();
+        status.innerText = data.available
+          ? `✅ Tersedia (${data.remaining} slot)`
+          : "❌ Penuh";
+      } catch (err) {
+        status.innerText = "Gagal cek ketersediaan.";
+      }
+    }
 
+    async function booking() {
+      const status = document.getElementById("status");
+
+      const nama = document.getElementById("nama").value.trim();
+      const alamat = document.getElementById("alamat").value.trim();
+      const wa = document.getElementById("wa").value.trim();
+      const tanggal = document.getElementById("tanggal").value;
+      const layanan = document.getElementById("layanan").value;
+      const mobil = document.getElementById("mobil").value;
+      const notes = document.getElementById("pesan").value.trim();
+
+      if (!nama || !alamat || !wa || !tanggal || !layanan) {
+        status.innerText = "Lengkapi data terlebih dahulu.";
+        return;
+      }
+
+      try {
+        status.innerText = "Mengirim booking...";
+
+        const res = await fetch(URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({
+            api_key: API_KEY,
+            action: "create",
+            nama: nama,
+            alamat: alamat,
+            wa: wa,
+            layanan: layanan,
+            tanggal: tanggal,
+            mobil: mobil,
+            notes: notes,
+            lokasi: "Semarang"
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          status.innerText = "✅ " + data.message;
+        } else {
+          status.innerText = "❌ " + (data.message || "Booking gagal");
+        }
+      } catch (err) {
+        status.innerText = "Gagal mengirim booking.";
+      }
+    }
+  </script>
 </body>
 </html>
