@@ -115,6 +115,7 @@
 
       <input id="nama" placeholder="Nama Lengkap">
       <input id="alamat" placeholder="Alamat">
+      <input id="lokasi" placeholder="Kota / Lokasi Acara">
       <input id="wa" placeholder="No. WhatsApp (08xxx)">
       <input id="tanggal" type="date">
 
@@ -184,13 +185,14 @@
 
       const nama = document.getElementById("nama").value.trim();
       const alamat = document.getElementById("alamat").value.trim();
+      const lokasi = document.getElementById("lokasi").value.trim();
       const wa = document.getElementById("wa").value.trim();
       const tanggal = document.getElementById("tanggal").value;
       const layanan = document.getElementById("layanan").value;
       const mobil = document.getElementById("mobil").value;
       const notes = document.getElementById("pesan").value.trim();
 
-      if (!nama || !alamat || !wa || !tanggal || !layanan) {
+      if (!nama || !alamat || !lokasi || !wa || !tanggal || !layanan) {
         status.innerText = "Lengkapi data terlebih dahulu.";
         return;
       }
@@ -208,12 +210,12 @@
             action: "create",
             nama: nama,
             alamat: alamat,
+            lokasi: lokasi,
             wa: wa,
             layanan: layanan,
             tanggal: tanggal,
             mobil: mobil,
-            notes: notes,
-            lokasi: "Semarang"
+            notes: notes
           })
         });
 
